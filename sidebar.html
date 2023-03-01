@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@5.2.0/github-markdown-light.css">
   <style>
     :root {
-      --settings-height: 55px;
+      --allowance: 400px;
     }
 
     #mdpreview-wrapper {
-      padding-bottom: var(--settings-height);
+      padding-bottom: var(--allowance);
     }
 
     #settings-wrapper {
@@ -20,7 +20,6 @@
       left: 0;
       display: block;
       background: white;
-      /* height: var(--settings-height); */
     }
 
     .inline-block {
@@ -37,13 +36,15 @@
 </head>
 <body>
 <div class="sidebar markdown-body" id="mdpreview-wrapper">
-  <p>Use the preview button to preview your markdown.</p>
+  <p>Use the preview button or auto preview checkbox below to get started.</p>
 </div>
 
 <div class="sidebar bottom" id="settings-wrapper">
   <div class="block" id="settings">
     <div class="inline-block">
       <button class="blue" id="preview">Preview</button>
+      <input type="checkbox" id="auto-preview" />
+      <label for="auto-preview">Auto preview</label>
     </div>
     <span>
       <a class="inline-block" target="_blank" href="http://github.com/iamgideonidoko/gdocs-markdown-preview">
@@ -74,7 +75,17 @@
    */
   $(function() {
     $('#preview').click(initMarkdownRender);
+    $("#auto-preview").change(handleAutoPreview);
   });
+
+  /**
+   * Hanlde auto preview
+   */
+  function handleAutoPreview() {
+    initMarkdownRender();
+    if ($("#auto-preview").is(":checked"))
+        setTimeout("handleAutoPreview()", 100)
+  }
 
   /**
    * Gets and renders text (presumely markdown) from active document body
