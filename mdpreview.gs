@@ -1,5 +1,5 @@
 /**
- * Create a menu entry in the Google Docs UI when the document is opened.
+ * Creates a menu entry in the Google Docs UI when the document is opened.
  *
  * @param {object} e The event parameter for a simple onOpen trigger.
  */
@@ -10,7 +10,7 @@ function onOpen(e) {
 }
 
 /**
- * Run the add-on when it is installed.
+ * Runs the add-on when it is installed.
  *
  * @param {object} e The event parameter for a simple onOpen trigger.
  */
@@ -29,7 +29,7 @@ function showSidebar() {
 }
 
 /**
- * Get the body of the active document
+ * Gets the body of the active document
  *
  * @return {Body} The body of the active document.
  */
@@ -38,7 +38,7 @@ function getActiveDocumentBody() {
 }
 
 /**
- * Get the text content of the body of the active document.
+ * Gets the text content of the body of the active document.
  *
  * @return {string} The active document body text content
  */
