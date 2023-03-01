@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css" />
   <!-- The CSS package above applies Google styling to buttons and other elements. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@5.2.0/github-markdown-light.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css">
   <style>
     :root {
       --allowance: 400px;
@@ -64,8 +65,21 @@
   crossorigin="anonymous" 
   referrerpolicy="no-referrer"
 ></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
 <script>
-  var renderer = window.markdownit();
+  var renderer = window.markdownit({
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return '<pre class="hljs"><code>' +
+                hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                '</code></pre>';
+        } catch (__) {}
+      }
+
+      return '<pre class="hljs"><code>' + renderer.utils.escapeHtml(str) + '</code></pre>';
+    }
+  });
 
   // holds last rendered text content of active document body
   var prevText = "";
