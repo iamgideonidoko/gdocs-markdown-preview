@@ -27,3 +27,22 @@ function showSidebar() {
       .setTitle('Markdown Preview');
   DocumentApp.getUi().showSidebar(ui);
 }
+
+/**
+ * Get the body of the active document
+ *
+ * @return {Body} The body of the active document.
+ */
+function getActiveDocumentBody() {
+  return DocumentApp.getActiveDocument().getBody();
+}
+
+/**
+ * Get the text content of the body of the active document.
+ *
+ * @return {string} The active document body text content
+ */
+function getDocumentText() {
+  // return text
+  return getActiveDocumentBody().getText();
+}
