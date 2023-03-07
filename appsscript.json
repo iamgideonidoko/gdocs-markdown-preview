@@ -6,6 +6,6 @@
   "runtimeVersion": "V8",
   "oauthScopes": [
     "https://www.googleapis.com/auth/script.container.ui",
-    "https://www.googleapis.com/auth/document.currentonly"
+    "https://www.googleapis.com/auth/documents.currentonly"
   ]
 }
